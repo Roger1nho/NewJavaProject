@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.newjavaproject.HelloController">
+
+    <top>
+        <TabPane>
+            <Tab text="Products">
+                <VBox>
+                    <!-- Product Table -->
+                    <TableView fx:id="productTable">
+                        <columns>
+                            <TableColumn text="ID" prefWidth="50">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="id"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn text="Name" prefWidth="150">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="nume"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn text="Category" prefWidth="150">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="categorie"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn text="Price" prefWidth="100">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="pret"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                        </columns>
+                    </TableView>
+
+                    <!-- Product Form -->
+                    <GridPane hgap="10" vgap="10">
+                        <Label text="ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="productIdField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="productNameField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <Label text="Category:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <TextField fx:id="productCategoryField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                        <Label text="Price:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <TextField fx:id="productPriceField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                        <HBox spacing="10" GridPane.rowIndex="4" GridPane.columnSpan="2">
+                            <Button text="Add" onAction="#handleAddProduct"/>
+                            <!--                                    <Button text="Update" onAction="#handleUpdateProduct"/>-->
+                            <!--                                    <Button text="Delete" onAction="#handleDeleteProduct"/>-->
+                        </HBox>
+                    </GridPane>
+                </VBox>
+            </Tab>
+
+            <Tab text="Orders">
+                <VBox>
+                    <!-- Order Table -->
+                    <TableView fx:id="orderTable">
+                        <columns>
+                            <TableColumn text="Order ID">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="id"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn text="Date" prefWidth="120">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="data"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn text="Products" prefWidth="300"/>
+                        </columns>
+                    </TableView>
+
+                    <!-- Order Form -->
+                    <GridPane hgap="10" vgap="10">
+                        <Label text="Order ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="orderIdField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                        <Label text="Date:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="orderDateField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                        <HBox spacing="10" GridPane.rowIndex="2" GridPane.columnSpan="2">
+                            <Button text="Create Order" onAction="#handleCreateOrder"/>
+                            <!--                                    <Button text="Delete Order" onAction="#handleDeleteOrder"/>-->
+                        </HBox>
+                    </GridPane>
+
+                    <!-- Product Selection -->
+                    <HBox spacing="20">
+                        <VBox spacing="5">
+                            <Label text="Available Products"/>
+                            <ListView fx:id="availableProductsList" prefWidth="250" prefHeight="150"/>
+                        </VBox>
+
+                        <VBox spacing="10" alignment="CENTER">
+                            <Button text="Add →" onAction="#handleAddProductToOrder"/>
+                            <Button text="← Remove" onAction="#handleRemoveProductFromOrder"/>
+                            <Label text="Quantity"/>
+                            <Spinner fx:id="quantitySpinner" prefWidth="80"/>
+                        </VBox>
+
+                        <VBox spacing="5">
+                            <Label text="Selected Products"/>
+                            <ListView fx:id="selectedProductsList" prefWidth="250" prefHeight="150"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </Tab>
+        </TabPane>
+    </top>
+</BorderPane>
